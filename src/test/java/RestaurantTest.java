@@ -44,12 +44,17 @@ class RestaurantTest {
 
     @Test
     public void total_cost_should_increase_when_items_are_added(){
-
+        item = restaurant.getMenu();
+        assertEquals(388, restaurant.getTotalCost(item));
     }
 
     @Test
     public void total_cost_should_reduce_when_items_are_removed(){
-
+        item = restaurant.getMenu();
+        int total = restaurant.getTotalCost(item);
+        int afterTotal = item.get(1).getPrice();
+        item.remove(1);
+        assertEquals(total - afterTotal, restaurant.getTotalCost(item));
     }
 
     //<<<<<<<<<<<<<<<<<<<<<<<<<<TOTAL COST>>>>>>>>>>>>>>>>>>>>>>>>>>>
